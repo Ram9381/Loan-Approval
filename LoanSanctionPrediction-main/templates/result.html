@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Prediction Result</title>
+    <style>
+       
+
+        h1 {
+            color: #333333;
+            text-align: left;
+            align-items: left;
+            justify-content: left;
+            margin-top: 2%;
+            margin-left: 5%;
+        }
+
+        p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            background-color: #f2f2f2;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            color: #4caf50;
+            margin: 10px 0;
+        }
+
+        a {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 2%;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Loan Prediction Result</h1>
+    <p>The loan is: {{ prediction }}</p>
+    <p>Interest Rate: {{ interest_rate }}%</p>
+    <a href="/">Go back to prediction</a>
+</body>
+</html>

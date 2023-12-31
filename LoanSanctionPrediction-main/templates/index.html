@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Prediction Calculator</title>
+ <style>
+	h1 {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    	}
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+
+        form {
+            background-color: #ADD8E6;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        h1, h2 {
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Loan Prediction Calculator</h1>
+    <form action="/predict" method="post">
+	<label for="loan_type">Loan Type:</label>
+	<select name="loan_type" id="loan_type" required onchange="updateInterestRate()">
+	<option value="" disabled selected>--Select a Loan Type--</option>
+    	<option value="home_loan" data-interest-rate="5">Home Loan</option>
+    	<option value="personal_loan" data-interest-rate="7">Personal Loan</option>
+    	<option value="student_loan" data-interest-rate="3">Student Loan</option>
+	</select><br>
+	<div id="interest_rate_box"></div><br>
+
+	<script>
+    	function updateInterestRate() {
+        	var loanTypeSelect = document.getElementById("loan_type");
+        	var selectedOption = loanTypeSelect.options[loanTypeSelect.selectedIndex];
+        	var interestRateBox = document.getElementById("interest_rate_box");
+
+	        if (selectedOption.value !== "") {
+        	    var interestRate = selectedOption.getAttribute("data-interest-rate");
+            	interestRateBox.textContent = "Interest Rate: " + interestRate + "%";
+        	} else {
+            	interestRateBox.textContent = ""; // Clear the box if no option is selected
+        	}
+    	}
+	</script>
+        <label class="section-title" for="Education">Education:</label>
+        <select name="Education" id="Education">
+        <option value="" disabled selected>--Y/N--</option>
+    	<option value="1">Y</option>
+    	<option value="0">N</option>
+        </select><br>
+        <label class="section-title" for="Self_Employed">Self Employed:</label>
+        <select name="Self_Employed" id="Self_Employed">
+            <option value="" disabled selected>--Y/N--</option>
+            <option value="1">Y</option>
+            <option value="0">N</option>
+            </select><br>
+        <label class="section-title" for="Dependents">Dependents:</label>
+        <select name="Dependents" id="Dependents">
+        <option value="" disabled selected>--Select no of Dependents--</option>
+    	<option value="1.0">1</option>
+    	<option value="2.0">2</option>
+        <option value="3.0">3</option>
+        </select><br>
+        <label for="applicant_income">Applicant Income:</label>
+        <input type="number" name="applicant_income" required><br>
+
+        <label for="coapplicant_income">Coapplicant Income:</label>
+        <input type="number" name="coapplicant_income" required><br>
+
+        <label for="loan_amount">Loan Amount:</label>
+        <input type="number" name="loan_amount" required><br>
+
+        <label for="loan_term">Loan Term (in months):</label>
+        <input type="number" name="loan_term" required><br>
+
+        <label for="credit_history">Credit History:</label>
+        <input type="text" name="credit_history" required><br>
+
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
